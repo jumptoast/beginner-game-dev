@@ -1,6 +1,6 @@
 # Beginner Game Dev
 
-An easy way to get started with game development is by using your internet browser as your game engine! Modern internet browsers are powerful multimedia engines that we use everyday and are great for learning how to code!
+An easy way to get started with game development is by using your internet browser as your game engine! Modern internet browsers are powerful multimedia engines that we use everyday and are great for learning how to code and make games! Let's see how!
 
 ## Video tutorial
 
