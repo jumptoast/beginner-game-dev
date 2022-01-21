@@ -1,4 +1,4 @@
-# beginner-game-dev
+# Beginner Game Dev
 
 - Click the green button that says "Code" then click "Download Zip"
 - Unzip and then click game.html
