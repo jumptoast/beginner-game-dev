@@ -3,7 +3,9 @@
 An easy way to get started with game development is by using your internet browser as your game engine! Modern internet browsers are powerful multimedia engines that we use everyday and are great for learning how to code!
 
 ### Follow along with video:  
-https://www.twitch.tv/collections/DicV4KguzBYoZQ
+**https://www.twitch.tv/collections/DicV4KguzBYoZQ**
+
+**NOTE:** Hover over the video title to navigate each video
 
 ### Instructions:
 - Click the green button that says "Code" then click "Download Zip"
