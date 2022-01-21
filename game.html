@@ -1,0 +1,182 @@
+<html>
+    <head>
+        <style>
+            
+            .game-object {
+                position: absolute;
+                width: 20px;
+                height: 20px;
+                background: orange;
+            }
+
+            .enemy {
+                background: red;
+            }
+
+            #player {
+                background: blue;
+            }
+            
+        </style>
+    </head>
+    <body>
+
+        <!-- 
+        <div>Click to play!</div>
+        <div>Click here!</div> 
+        -->
+
+        <script>
+
+            let keys = {};
+
+            let enemy1 = {
+                elem: document.createElement('div'),
+                name: 'Dr. Evil',
+                x: 0, 
+                y: 300,
+                w: 20,
+                h: 20,
+            };
+            enemy1.elem.classList.add('game-object');
+            enemy1.elem.classList.add('enemy');
+
+            let enemy2 = {
+                elem: document.createElement('div'),
+                name: 'Dr. Mundo',
+                x: 200, 
+                y: 300,
+                w: 20,
+                h: 20,
+            };
+            enemy2.elem.classList.add('game-object');
+            enemy2.elem.classList.add('enemy');
+            
+            let player = {
+                elem: document.createElement('div'),
+                name: 'Jumptoast',
+                x: 100, 
+                y: 100,
+                w: 20,
+                h: 20,
+                dead: false,
+            };
+            player['elem'].id = 'player';
+            player.elem.classList.add('game-object');
+            
+            // add player to page
+            document.body.append(player.elem);
+            document.body.append(enemy1.elem);
+            document.body.append(enemy2.elem);
+
+            // keyboard input
+            function onKeyDown(event) {
+                let key = event.key;
+                keys[key] = true;
+            }
+            function onKeyUp(event) {
+                let key = event.key;
+                keys[key] = false;
+            }
+            document.addEventListener('keydown', onKeyDown);
+            document.addEventListener('keyup', onKeyUp);
+            
+            function update() {
+
+                //// data update
+
+                // basic enemy AI
+                if(player.x > enemy1.x) {
+                    enemy1.x += 1;
+                }
+                if(player.x < enemy1.x) {
+                    enemy1.x -= 1;
+                }
+                if(player.y > enemy1.y) {
+                    enemy1.y += 1.5;
+                }
+                if(player.y < enemy1.y) {
+                    enemy1.y -= 1.5;
+                }
+
+                if(player.x > enemy2.x) {
+                    enemy2.x += 1.5;
+                }
+                if(player.x < enemy2.x) {
+                    enemy2.x -= 1.5;
+                }
+                if(player.y > enemy2.y) {
+                    enemy2.y += 1;
+                }
+                if(player.y < enemy2.y) {
+                    enemy2.y -= 1;
+                }
+
+                // user based movement
+                if(player.dead == false) {
+                    if(keys['ArrowLeft'] == true) {
+                        player.x = player.x - 2;
+                    }
+                    if(keys['ArrowRight'] == true) {
+                        player.x = player.x + 2;
+                    }
+                    if(keys['ArrowUp'] == true) {
+                        player.y = player.y - 2;
+                    }
+                    if(keys['ArrowDown'] == true) {
+                        player.y = player.y + 2;
+                    }
+                }
+                
+                // boundary
+                if(player.x > 200) {
+                    player.x = 200;
+                }
+                if(player.y > 300) {
+                    player.y = 300;
+                }
+                if(player.x < 0) {
+                    player.x = 0;
+                }
+                if(player.y < 0) {
+                    player.y = 0;
+                }
+
+                if( player.dead == false && checkBoxCollision(player, enemy1) == true ) {
+                    alert('Ahhh!');
+                    player.dead = true;
+                }
+
+                if( player.dead == false && checkBoxCollision(player, enemy2) == true ) {
+                    alert('Ahhh!');
+                    player.dead = true;
+                }
+
+                // render update
+                player.elem.style.left = player.x + 'px';
+                player.elem.style.top = player.y + 'px';
+                enemy1.elem.style.left = enemy1.x + 'px';
+                enemy1.elem.style.top = enemy1.y + 'px';
+                enemy2.elem.style.left = enemy2.x + 'px';
+                enemy2.elem.style.top = enemy2.y + 'px';
+                
+            }
+
+            function checkBoxCollision(rect1, rect2) {
+                let isColliding = false;
+                if (rect1.x < rect2.x + rect2.w &&
+                    rect1.x + rect1.w > rect2.x &&
+                    rect1.y < rect2.y + rect2.h &&
+                    rect1.h + rect1.y > rect2.y) {
+                    isColliding = true;
+                }
+                return isColliding;
+            }
+
+            // main tick
+            setInterval(update, 17);
+
+        </script>
+        
+    </body>
+</html>

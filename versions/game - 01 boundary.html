@@ -1,0 +1,65 @@
+<html>
+    <head>
+        <style>
+            
+            .game-object {
+                position: absolute;
+                width: 20px;
+                height: 20px;
+                background: orange;
+            }
+
+            #player {
+                background: red;
+            }
+            
+        </style>
+    </head>
+    <body>
+
+        <div>Click to play!</div>
+        <div>Click here!</div>
+
+        <div class="game-object"></div>
+
+        <script>
+
+            let elem = document.createElement('div');
+            let x = 0;
+            let y = 0;
+
+            // setup player
+            elem.id = 'player';
+            elem.classList.add('game-object');
+            
+            // add player to page
+            document.body.append(elem);
+            
+            function update() {
+
+                //// data update
+                
+                // move
+                x = x + 2;
+                y = y + 1;
+                
+                // boundary
+                if(x > 200) {
+                    x = 200;
+                }
+                if(y > 300) {
+                    y = 300;
+                }
+
+                // render update
+                elem.style.left = x + 'px';
+                elem.style.top = y + 'px';
+                
+            }
+
+            setInterval(update, 17);
+
+        </script>
+        
+    </body>
+</html>

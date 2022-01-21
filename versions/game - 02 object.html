@@ -1,0 +1,68 @@
+<html>
+    <head>
+        <style>
+            
+            .game-object {
+                position: absolute;
+                width: 20px;
+                height: 20px;
+                background: orange;
+            }
+
+            #player {
+                background: red;
+            }
+            
+        </style>
+    </head>
+    <body>
+
+        <div>Click to play!</div>
+        <div>Click here!</div>
+
+        <div class="game-object"></div>
+
+        <script>
+
+            let player = { x: 10, y: 10 };
+
+            player.name = 'Jumptoast';
+            player.elem = document.createElement('div');
+            player.x = 0;
+            player.y = 0;
+
+            // setup player
+            player.elem.id = 'player';
+            player.elem.classList.add('game-object');
+            
+            // add player to page
+            document.body.append(player.elem);
+            
+            function update() {
+
+                //// data update
+                
+                // move
+                player.x = player.x + 2;
+                player.y = player.y + 1;
+                
+                // boundary
+                if(player.x > 200) {
+                    player.x = 200;
+                }
+                if(player.y > 300) {
+                    player.y = 300;
+                }
+
+                // render update
+                player.elem.style.left = player.x + 'px';
+                player.elem.style.top = player.y + 'px';
+                
+            }
+
+            setInterval(update, 17);
+
+        </script>
+        
+    </body>
+</html>
