@@ -1,0 +1,94 @@
+
+Q: How do I put things on the screen?
+  A: HTML tags (aka "elements") (aka "HTML elements")
+
+Whitespace ~ spaces, tabs, newlines (linebreak)
+  ^ It's all ignored by the computer
+
+DOM = Document (object model)
+
+Q: How do I put things on the screen/DOM with JavaScript?
+  A: document.body.append(element) <-- in our case, the element was player
+
+^
+JavaScript
+
+  Programming language ~ it's just a lanuage ~ like english/french/spanish/chinese/etc
+
+  Syntax = rules of the language
+
+  ---
+  core:
+
+  ;              - end of statement
+  ()             - these are for holding parameters for functions
+  {}             - contains code (for resuse, most times) ~ blocks, scope
+  .              - access to variables that are contained in "things" (aka objects) (Ex: document.location.origin)
+  object[string] - access to a variable in an object using a string to get it
+  //             - comment ~ ignored by the computer
+  true/false     - truth values ~ boolean
+
+  a = 1          - set a variable
+  a == 1         - compare two values
+
+  ---
+  keywords:
+
+  let              - variable creation ~ let a = 1;
+  function         - function creation ~ function myFunction(...params) { ...body }
+  if/else/else if  - conditional logic ~ if(...condition) { ...body }
+  &&               - logical AND ~ "if both this and that are true"
+  ||               - logial OR ~ "if either this or that is true"
+
+  ---
+  things:
+
+  document - access to the DOM from JavaScript
+
+  ---
+
+Q: How to make things move?
+
+  / Main update/refresh/render loop/tick - setInterval(function, interval)
+
+  / Position data     - let x = 0; 
+
+  / Update data       - x += 1;
+
+  / Update DOM values - player.style.left = x + 'px';
+
+---
+
+/ Moving to local website instead of website from internet
+  A: create a {{name}}.html file on your desktop and then click it
+
+/ Objects
+
+/ User input (starting with keyboard)
+
+/ Basic AI
+
+/ Collision detection
+
+/ Multiple enemies (the static way with lots of code)
+
+Multiple enemies (the dynamic way with loops)
+
+---
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
