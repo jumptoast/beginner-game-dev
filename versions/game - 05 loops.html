@@ -1,10 +1,6 @@
 <html>
     <head>
         <style>
-            html {
-                overflow: hidden;
-            }
-
             .game-object {
                 position: absolute;
                 width: 20px;
@@ -31,28 +27,33 @@
             let keys = {};
             let enemies = {};
 
-            for (let i = 0; i < 50; i++) {
-                enemies['enemy' + i] = {
-                    elem: document.createElement('div'),
-                    name: 'Dr. Evil',
-                    x: Math.random() * 300,
-                    y: 400 + Math.random() * 400,
-                    w: 20,
-                    h: 20,
-                    speedUp: Math.random(),
-                    speedDown: Math.random(),
-                    speedLeft: Math.random(),
-                    speedRight: Math.random(),
-                };
-                enemies['enemy' + i].elem.classList.add('game-object');
-                enemies['enemy' + i].elem.classList.add('enemy');
-            }
+            enemies['enemy1'] = {
+                elem: document.createElement('div'),
+                name: 'Dr. Evil',
+                x: 0,
+                y: 300,
+                w: 20,
+                h: 20,
+            };
+            enemies['enemy1'].elem.classList.add('game-object');
+            enemies['enemy1'].elem.classList.add('enemy');
+
+            enemies['enemy2'] = {
+                elem: document.createElement('div'),
+                name: 'Dr. Mundo',
+                x: 200,
+                y: 300,
+                w: 20,
+                h: 20,
+            };
+            enemies['enemy2'].elem.classList.add('game-object');
+            enemies['enemy2'].elem.classList.add('enemy');
 
             let player = {
                 elem: document.createElement('div'),
                 name: 'Jumptoast',
                 x: 100,
-                y: 10,
+                y: 100,
                 w: 20,
                 h: 20,
                 dead: false,
@@ -63,8 +64,9 @@
             // add player to page
             document.body.append(player.elem);
 
-            // add enemies
+            // // add enemies
             for (let id in enemies) {
+                console.log(id);
                 document.body.append(enemies[id].elem);
             }
 
@@ -86,29 +88,18 @@
 
                 // basic enemy AI
                 for (let id in enemies) {
-
-                    if (Math.abs(player.y - enemies[id].y) > 5) {
-
-                        if (player.y > enemies[id].y) {
-                            enemies[id].y += enemies[id].speedDown;
-                        }
-                        if (player.y < enemies[id].y) {
-                            enemies[id].y -= enemies[id].speedUp;
-                        }
-
+                    if (player.x > enemies[id].x) {
+                        enemies[id].x += 1;
                     }
-
-                    if (Math.abs(player.x - enemies[id].x) > 5) {
-
-                        if (player.x > enemies[id].x) {
-                            enemies[id].x += enemies[id].speedRight;
-                        }
-                        if (player.x < enemies[id].x) {
-                            enemies[id].x -= enemies[id].speedLeft;
-                        }
-
+                    if (player.x < enemies[id].x) {
+                        enemies[id].x -= 1;
                     }
-
+                    if (player.y > enemies[id].y) {
+                        enemies[id].y += 1.5;
+                    }
+                    if (player.y < enemies[id].y) {
+                        enemies[id].y -= 1.5;
+                    }
                 }
 
                 // user based movement
@@ -127,20 +118,19 @@
                     }
                 }
 
-                // REMOVED FOR NOW
-                // // boundary
-                // if (player.x > 200) {
-                //     player.x = 200;
-                // }
-                // if (player.y > 300) {
-                //     player.y = 300;
-                // }
-                // if (player.x < 0) {
-                //     player.x = 0;
-                // }
-                // if (player.y < 0) {
-                //     player.y = 0;
-                // }
+                // boundary
+                if (player.x > 200) {
+                    player.x = 200;
+                }
+                if (player.y > 300) {
+                    player.y = 300;
+                }
+                if (player.x < 0) {
+                    player.x = 0;
+                }
+                if (player.y < 0) {
+                    player.y = 0;
+                }
 
                 for (let id in enemies) {
                     if (player.dead == false && checkBoxCollision(player, enemies[id]) == true) {

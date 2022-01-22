@@ -40,10 +40,20 @@ JavaScript
   &&               - logical AND ~ "if both this and that are true"
   ||               - logial OR ~ "if either this or that is true"
 
+  a++              - add one
+  a--              - subtract one
+
   ---
   things:
 
   document - access to the DOM from JavaScript
+
+  
+  Data Structures
+    Array   - List of things (ordered)
+    Object  - Container of things (unordered)
+
+  "Refactoring"
 
   ---
 
@@ -58,6 +68,7 @@ Q: How to make things move?
   / Update DOM values - player.style.left = x + 'px';
 
 ---
+TODO:
 
 / Moving to local website instead of website from internet
   A: create a {{name}}.html file on your desktop and then click it
