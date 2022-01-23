@@ -1,6 +1,7 @@
 <html>
     <head>
         <style>
+
             html {
                 overflow: hidden;
             }
@@ -14,27 +15,37 @@
 
             .enemy {
                 background: red;
+                z-index: 1;
+            }
+
+            .bullet {
+                width: 5px;
+                height: 5px;
+                background: gray;
+                z-index: 2;
             }
 
             #player {
                 background: blue;
+                z-index: 3;
             }
+
         </style>
     </head>
     <body>
-        <!-- 
-        <div>Click to play!</div>
-        <div>Click here!</div> 
-        -->
         <script>
+
+            let bulletSpeed = 5;
 
             let keys = {};
             let enemies = {};
+            let bullets = {};
+            let bulletCounter = 0;
 
+            // setup enemies
             for (let i = 0; i < 50; i++) {
                 enemies['enemy' + i] = {
                     elem: document.createElement('div'),
-                    name: 'Dr. Evil',
                     x: Math.random() * 300,
                     y: 400 + Math.random() * 400,
                     w: 20,
@@ -43,11 +54,14 @@
                     speedDown: Math.random(),
                     speedLeft: Math.random(),
                     speedRight: Math.random(),
+                    offsetX: 1 + Math.random()*10,
+                    offsetY: 1 + Math.random()*10,
                 };
                 enemies['enemy' + i].elem.classList.add('game-object');
                 enemies['enemy' + i].elem.classList.add('enemy');
             }
 
+            // setup player
             let player = {
                 elem: document.createElement('div'),
                 name: 'Jumptoast',
@@ -68,10 +82,45 @@
                 document.body.append(enemies[id].elem);
             }
 
+            function addBullet(x, y, vx, vy) {
+                bullets['bullet' + bulletCounter] = {
+                    elem: document.createElement('div'),
+                    x: x,
+                    y: y,
+                    w: 5,
+                    h: 5,
+                    vx,
+                    vy,
+                };
+                bullets['bullet' + bulletCounter].elem.classList.add('game-object');
+                bullets['bullet' + bulletCounter].elem.classList.add('bullet');
+                bullets['bullet' + bulletCounter].elem.style.left = bullets['bullet' + bulletCounter].x + 'px';
+                bullets['bullet' + bulletCounter].elem.style.top = bullets['bullet' + bulletCounter].y + 'px';
+                document.body.append(bullets['bullet' + bulletCounter].elem);
+                bulletCounter++;
+            }
+
             // keyboard input
             function onKeyDown(event) {
                 let key = event.key;
                 keys[key] = true;
+
+                let x = player.x + player.w/2 - 2.5;
+                let y = player.y + player.h/2 - 2.5;
+
+                if(key == 's') {
+                    addBullet(x, y, 0, bulletSpeed);
+                }
+                if(key == 'w') {
+                    addBullet(x, y, 0, -bulletSpeed);
+                }
+                if(key == 'd') {
+                    addBullet(x, y, bulletSpeed, 0);
+                }
+                if(key == 'a') {
+                    addBullet(x, y, -bulletSpeed, 0);
+                }
+
             }
             function onKeyUp(event) {
                 let key = event.key;
@@ -87,7 +136,7 @@
                 // basic enemy AI
                 for (let id in enemies) {
 
-                    if (Math.abs(player.y - enemies[id].y) > 5) {
+                    if (Math.abs(player.y - enemies[id].y) > enemies[id].offsetY) {
 
                         if (player.y > enemies[id].y) {
                             enemies[id].y += enemies[id].speedDown;
@@ -98,7 +147,7 @@
 
                     }
 
-                    if (Math.abs(player.x - enemies[id].x) > 5) {
+                    if (Math.abs(player.x - enemies[id].x) > enemies[id].offsetX) {
 
                         if (player.x > enemies[id].x) {
                             enemies[id].x += enemies[id].speedRight;
@@ -142,11 +191,29 @@
                 //     player.y = 0;
                 // }
 
+                // collisions
                 for (let id in enemies) {
+
+                    // player-enemy
                     if (player.dead == false && checkBoxCollision(player, enemies[id]) == true) {
                         alert('Ahhh!');
                         player.dead = true;
                     }
+
+                    // bullet-enemy
+                    for(let bid in bullets) {
+                        if(checkBoxCollision(bullets[bid], enemies[id]) == true) {
+                            delete enemies[id];
+                            delete bullets[bid];
+                            break;
+                        }
+                    }
+
+                }
+
+                for (let id in bullets) {
+                    bullets[id].x += bullets[id].vx;
+                    bullets[id].y += bullets[id].vy;
                 }
 
                 // render update
@@ -155,6 +222,10 @@
                 for (let id in enemies) {
                     enemies[id].elem.style.left = enemies[id].x + 'px';
                     enemies[id].elem.style.top = enemies[id].y + 'px';
+                }
+                for (let id in bullets) {
+                    bullets[id].elem.style.left = bullets[id].x + 'px';
+                    bullets[id].elem.style.top = bullets[id].y + 'px';
                 }
 
             }
@@ -169,6 +240,7 @@
 
             // main tick
             setInterval(update, 17);
+
         </script>
     </body>
 </html>

@@ -1,7 +1,7 @@
 <html>
     <head>
         <style>
-            
+
             .game-object {
                 position: absolute;
                 width: 20px;
@@ -12,7 +12,7 @@
             #player {
                 background: red;
             }
-            
+
         </style>
     </head>
     <body>
@@ -31,18 +31,18 @@
             // setup player
             elem.id = 'player';
             elem.classList.add('game-object');
-            
+
             // add player to page
             document.body.append(elem);
-            
+
             function update() {
 
                 //// data update
-                
+
                 // move
                 x = x + 2;
                 y = y + 1;
-                
+
                 // boundary
                 if(x > 200) {
                     x = 200;
@@ -54,12 +54,12 @@
                 // render update
                 elem.style.left = x + 'px';
                 elem.style.top = y + 'px';
-                
+
             }
 
             setInterval(update, 17);
 
         </script>
-        
+
     </body>
 </html>

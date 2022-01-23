@@ -43,17 +43,19 @@ JavaScript
   a++              - add one
   a--              - subtract one
 
+  for              - a for loop
+  break            - break out of the nearest* loop
+
   ---
   things:
 
   document - access to the DOM from JavaScript
 
-  
   Data Structures
-    Array   - List of things (ordered)
-    Object  - Container of things (unordered)
+    Array   - List of things (ordered)          - [ 1, 2, 3 ]
+    Object  - Container of things (unordered)   - { a: 1, b: 2, c: 3 }
 
-  "Refactoring"
+  "Refactoring" - changing your code to support new features/ideas without changing the app itself
 
   ---
 
@@ -61,7 +63,7 @@ Q: How to make things move?
 
   / Main update/refresh/render loop/tick - setInterval(function, interval)
 
-  / Position data     - let x = 0; 
+  / Position data     - let x = 0;
 
   / Update data       - x += 1;
 
@@ -83,23 +85,6 @@ TODO:
 
 / Multiple enemies (the static way with lots of code)
 
-Multiple enemies (the dynamic way with loops)
+/ Multiple enemies (the dynamic way with loops)
 
 ---
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

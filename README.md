@@ -11,14 +11,14 @@ An easy way to get started with game development is by using your internet brows
 ## Instructions
 
 - Click the green button that says "Code" then click "Download Zip"
-- Unzip and then click game.html, your game should open in your browser
+- Unzip and then click index.html, your game should open in your browser
 - You can look at previous versions of the game in the versions/ directory
 
 ## Have a question?
 
-Create a new issue here,  
+Create a new issue here and I'll try to get back to you as soon as I can!  
 https://github.com/jumptoast/beginner-game-dev/issues
 
-We will be using issues as a question/answer forum!
+We will be using github issues as a question/answer forum!
 
 Enjoy! 😃
