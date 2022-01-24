@@ -1,3 +1,4 @@
+NOTES
 
 Q: How do I put things on the screen?
   A: HTML tags (aka "elements") (aka "HTML elements")
@@ -13,9 +14,9 @@ Q: How do I put things on the screen/DOM with JavaScript?
 ^
 JavaScript
 
-  Programming language ~ it's just a lanuage ~ like english/french/spanish/chinese/etc
+  A programming language ~ it's just a language ~ like english/french/spanish/chinese/etc
 
-  Syntax = rules of the language
+  Syntax = rules of the language ~ includes "tokens" and "keywords" ~ are reserved for doing certain things
 
   ---
   core:
@@ -28,8 +29,8 @@ JavaScript
   //             - comment ~ ignored by the computer
   true/false     - truth values ~ boolean
 
-  a = 1          - set a variable
-  a == 1         - compare two values
+  a = 1          - set a variable     ~ "set a to 1"
+  a == 1         - compare two values ~ "does a equal 1?"
 
   ---
   keywords:
@@ -55,7 +56,13 @@ JavaScript
     Array   - List of things (ordered)          - [ 1, 2, 3 ]
     Object  - Container of things (unordered)   - { a: 1, b: 2, c: 3 }
 
-  "Refactoring" - changing your code to support new features/ideas without changing the app itself
+  "Refactoring" - changing your code to support new features/ideas ~ usually to make it more flexible
+
+  Commenting - type CTRL+/ to comment code in your editor ~ this is very standard/universal across text editors
+
+    JavaScript comments - // ...
+    CSS comments        - /* ... */
+    HTML comments       - <!-- ... -->
 
   ---
 
