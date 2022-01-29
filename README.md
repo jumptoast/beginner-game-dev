@@ -2,6 +2,8 @@
 
 An easy way to get started with game development is by using your internet browser as your game engine! Modern internet browsers are powerful multimedia engines that we use everyday and are great for learning how to code and make games! Let's see how!
 
+View the final product at https://jumptoastjam22.netlify.app.
+
 ## Video tutorial
 
 **https://www.twitch.tv/collections/DicV4KguzBYoZQ**
@@ -19,6 +21,8 @@ An easy way to get started with game development is by using your internet brows
 Create a new issue here and I'll try to get back to you as soon as I can!  
 https://github.com/jumptoast/beginner-game-dev/issues
 
-We will be using github issues as a question/answer forum!
+Don't hesitate to ask anything - the forum is meant for complete beginners!
+
+We will be using GitHub issues as a question/answer forum!
 
 Enjoy! 😃
